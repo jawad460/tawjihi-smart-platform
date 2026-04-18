@@ -1,5 +1,3 @@
-# tawjihi-smart-platform
-Smart platform to help Tawjihi students understand the new system
 # 🎯 Tawjihi Smart Platform
 
 A smart web platform designed to help Jordanian Tawjihi students understand the new education system and calculate their grades easily.
