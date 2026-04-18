@@ -10,7 +10,7 @@
 
   gtag('config', 'G-HRV64TC5ZQ');
 </script>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>منصة التوجيهي الذكية</title>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
@@ -119,7 +119,6 @@ border-radius:10px;
 margin:10px 0;
 }
 </style>
-
 </head>
 
 <body>
@@ -202,7 +201,6 @@ margin:10px 0;
 <input id="f2" placeholder="مجموع السنة الثانية">
 <button class="calc" onclick="calcFinal()">احسب</button>
 <div id="r3" class="result"></div>
-<div id="r3" class="result"></div>
 
 <button onclick="clearAll()" style="background:#e74c3c;color:white;margin-top:10px;">
 🗑️ مسح جميع القيم
@@ -216,7 +214,7 @@ margin:10px 0;
 
 <h2>💡 نصائح</h2>
 
-<h3>📘 طلاب السنة الأولى</h3>
+<h3>📘 طلاب الاول ثانوي ( السنة الأولى )</h3>
 <ul>
 <li>لا تستهين بالـ30%</li>
 <li>افهم قبل ما تحفظ</li>
@@ -228,7 +226,7 @@ margin:10px 0;
 <li>راجع أول بأول ولا تراكم</li>
 </ul>
 
-<h3>📕 طلاب التوجيهي</h3>
+<h3>📕 طلاب التوجيهي ( السنة الثانية )</h3>
 <ul>
 <li>قسم يومك</li>
 <li>ركز على الأسئلة</li>
@@ -240,7 +238,7 @@ margin:10px 0;
 <li>اهتم بالنوم والصحة</li>
 </ul>
 
-<h3>🎯 طلاب مقبلين</h3>
+<h3>🎯 الطلاب المقبلين على التوجيهي</h3>
 <ul>
 <li>ابدأ مبكرًا</li>
 <li>نظم وقتك</li>
@@ -271,9 +269,11 @@ margin:10px 0;
 <div class="note">
 <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc3w-XVvukWX6f5_jvOM1t3SRTBwfHXXIuipZPvSmBmLUZuew/viewform?usp=header" width="100%" height="400"></iframe></div>
 </div>
+
 <footer>
 © 2026 Jawad Obeidat
 </footer>
+
 <script>
 function showTab(i){
 let tabs=document.querySelectorAll('.section');
@@ -302,10 +302,10 @@ r2.innerHTML="المجموع: "+s+" / 700<br>من 70: "+outOf70;
 
 // النهائي (من 100)
 function calcFinal(){
-let y1=Number(f1.value||0);
-let y2=Number(f2.value||0);
+let y1 = parseFloat(document.getElementById("f1").value) || 0;
+let y2 = parseFloat(document.getElementById("f2").value) || 0;
 
-let final=0;
+let final = 0;
 
 // إذا الإدخال من 300 و 700
 if(y1 > 30 || y2 > 70){
@@ -316,10 +316,10 @@ else{
     final = y1 + y2;
 }
 
-final = final.toFixed(2);
-
-r3.innerHTML="🎯 المعدل النهائي: "+final+" / 100";
+document.getElementById("r3").innerHTML =
+"🎯 المعدل النهائي: " + final.toFixed(2) + " / 100";
 }
+
 function clearAll(){
     if(confirm("هل أنت متأكد من مسح جميع القيم؟")){
         for(let i=1;i<=4;i++){
