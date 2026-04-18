@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>منصة التوجيهي الذكية</title>
+
+<style>
+body{font-family:Arial;direction:rtl;margin:0;background:#eef2f7}
+header{background:#1e3a5f;color:#fff;text-align:center;padding:15px}
+.tabs{display:flex;flex-wrap:wrap;background:#fff}
+.tabs button{flex:1;padding:12px;border:none;background:#ddd;cursor:pointer}
+.tabs button.active{background:#3498db;color:#fff}
+.section{display:none;padding:15px}
+.section.active{display:block}
+.box{background:#fff;margin:10px;border-radius:10px;padding:15px}
+h2{color:#1e3a5f}
+input,textarea{width:90%;padding:8px;margin:5px}
+button.calc{background:#27ae60;color:#fff;border:none;padding:8px;border-radius:5px}
+.result{font-weight:bold;margin-top:10px}
+.note{background:#ffeaa7;padding:10px;border-radius:8px;margin:10px 0}
+</style>
+
+</head>
+
+<body>
+
+<header>
+<h1>🎯 منصة التوجيهي الذكية</h1>
+<p>شرح شامل + حاسبات + نصائح</p>
+</header>
+
+<div class="tabs">
+<button onclick="showTab(0)" class="active">📖 الشرح</button>
+<button onclick="showTab(1)">🧮 الحاسبات</button>
+<button onclick="showTab(2)">💡 النصائح</button>
+<button onclick="showTab(3)">❓ الأسئلة</button>
+</div>
+
+<!-- الشرح -->
+<div class="section active">
+<div class="box">
+
+<h2>📢 تنويه</h2>
+<p>جميع المعلومات قابلة للتغيير حسب قرارات وزارة التربية والتعليم الأردنية وهي مبنية على آخر ما هو معلن حاليًا.</p>
+
+<h2>🟢 السنة الأولى (الأول ثانوي)</h2>
+<ul>
+<li>4 مواد: عربي (100) + إنجليزي/رياضيات (100) + دين (60) + تاريخ (40)</li>
+<li>المجموع: 300 علامة = 30%</li>
+<li>يشترط النجاح بالمدرسي للتقدم للوزاري</li>
+</ul>
+
+<h3>📌 الحقول (التخصصات)</h3>
+<ul>
+<li><b>الحقل الصحي:</b> إنجليزي متقدم + أحياء + كيمياء + (رياضيات أو فيزياء أو علوم أرض)</li>
+<li><b>الهندسة وتكنولوجيا المعلومات:</b> إنجليزي متقدم + رياضيات + فيزياء + (كيمياء أو أحياء أو علوم أرض)</li>
+<li><b>اللغات والعلوم الإنسانية:</b> عربي تخصص + دين تخصص + إنجليزي متقدم + (ثقافة مالية أو علم نفس أو فلسفة)</li>
+<li><b>الأعمال:</b> إنجليزي متقدم + رياضيات + أعمال + ثقافة مالية + (فلسفة أو تاريخ أو جغرافيا)</li>
+</ul>
+
+<p>
+طلاب 2009: اختيار حر<br>
+طلاب 2010+: يعتمد على معدل العاشر والأول ثانوي
+</p>
+
+<h2>🔴 السنة الثانية (التوجيهي)</h2>
+<ul>
+<li>4 مواد حسب الحقل</li>
+<li>المجموع: 700 = 70%</li>
+<li>كل 3 علامات ≈ 1% من المعدل</li>
+</ul>
+
+<h2>📝 نظام الامتحانات</h2>
+<ul>
+<li>السنة الأولى: دوائر + تعبير بالعربي والانجليزي</li>
+<li>السنة الثانية: كله اختيار من متعدد فقط</li>
+</ul>
+
+</div>
+</div>
+
+<!-- الحاسبات -->
+<div class="section">
+<div class="box">
+<h2>🧮 الحاسبات</h2>
+
+<h3>السنة الأولى</h3>
+<input id="y1_1" placeholder="عربي">
+<input id="y1_2" placeholder="دين">
+<input id="y1_3" placeholder="تاريخ">
+<input id="y1_4" placeholder="إنجليزي/رياضيات">
+<button class="calc" onclick="calcY1()">احسب</button>
+<div id="r1" class="result"></div>
+
+<h3>السنة الثانية</h3>
+<input id="y2_1"><input id="y2_2"><input id="y2_3"><input id="y2_4">
+<button class="calc" onclick="calcY2()">احسب</button>
+<div id="r2" class="result"></div>
+
+<h3>المعدل النهائي</h3>
+<input id="f1" placeholder="مجموع السنة الأولى">
+<input id="f2" placeholder="مجموع السنة الثانية">
+<button class="calc" onclick="calcFinal()">احسب</button>
+<div id="r3" class="result"></div>
+<div id="r3" class="result"></div>
+
+<button onclick="clearAll()" style="background:#e74c3c;color:white;margin-top:10px;">
+🗑️ مسح جميع القيم
+</button>
+</div>
+</div>
+
+<!-- النصائح -->
+<div class="section">
+<div class="box">
+
+<h2>💡 نصائح</h2>
+
+<h3>📘 طلاب السنة الأولى</h3>
+<ul>
+<li>لا تستهين بالـ30%</li>
+<li>افهم قبل ما تحفظ</li>
+<li>حل أسئلة سنوات</li>
+<li>لا تضيع وقتك على الهاتف والملهيات</li>
+<li>اسأل طلاب قبلك وتعلم من أخطائهم</li>
+<li>استخير وفكر جيدًا قبل اختيار الحقل</li>
+<li>نظم وقتك من البداية</li>
+<li>راجع أول بأول ولا تراكم</li>
+</ul>
+
+<h3>📕 طلاب التوجيهي</h3>
+<ul>
+<li>قسم يومك</li>
+<li>ركز على الأسئلة</li>
+<li>راجع باستمرار</li>
+<li>لا تضيع وقت</li>
+<li>لا تتكاسل لأنك طولت، أنت قربت تخلص</li>
+<li>موادك صعبة والغلط فيها مكلف</li>
+<li>حل أكبر عدد ممكن من الأسئلة</li>
+<li>اهتم بالنوم والصحة</li>
+</ul>
+
+<h3>🎯 طلاب مقبلين</h3>
+<ul>
+<li>ابدأ مبكرًا</li>
+<li>نظم وقتك</li>
+<li>ابنِ أساس قوي</li>
+<li>اختار أستاذك بعناية</li>
+<li>قيم نفسك إذا تحتاج تأسيس</li>
+<li>لا تمشي وراء كلام الناس بدون تفكير</li>
+<li>جرب طرق دراسة مختلفة</li>
+<li>حط هدف واضح من البداية</li>
+</ul>
+
+</div>
+</div>
+
+<!-- FAQ -->
+<div class="section">
+<div class="box">
+
+<h2>❓ الأسئلة الشائعة</h2>
+
+<p><b>هل السنة الأولى مهمة؟</b><br>نعم 30% كاملة</p>
+<p><b>هل أقدر أعوض؟</b><br>نعم بالسنة الثانية</p>
+<p><b>كيف أختار الحقل؟</b><br>حسب ميولك ومعدلك</p>
+<p><b>هل الامتحانات صعبة؟</b><br>تحتاج تدريب مستمر</p>
+
+<div class="note">
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc3w-XVvukWX6f5_jvOM1t3SRTBwfHXXIuipZPvSmBmLUZuew/viewform?usp=header" width="100%" height="400"></iframe></div>
+</div>
+
+<script>
+function showTab(i){
+let tabs=document.querySelectorAll('.section');
+let btns=document.querySelectorAll('.tabs button');
+tabs.forEach(t=>t.classList.remove('active'));
+btns.forEach(b=>b.classList.remove('active'));
+tabs[i].classList.add('active');
+btns[i].classList.add('active');
+}
+
+// السنة الأولى (من 30)
+function calcY1(){
+let s=0;
+for(let i=1;i<=4;i++){s+=Number(document.getElementById("y1_"+i).value||0);}
+let outOf30=(s/300*30).toFixed(2);
+r1.innerHTML="المجموع: "+s+" / 300<br>من 30: "+outOf30;
+}
+
+// السنة الثانية (من 70)
+function calcY2(){
+let s=0;
+for(let i=1;i<=4;i++){s+=Number(document.getElementById("y2_"+i).value||0);}
+let outOf70=(s/700*70).toFixed(2);
+r2.innerHTML="المجموع: "+s+" / 700<br>من 70: "+outOf70;
+}
+
+// النهائي (من 100)
+function calcFinal(){
+let y1=Number(f1.value||0);
+let y2=Number(f2.value||0);
+
+let final=0;
+
+// إذا الإدخال من 300 و 700
+if(y1 > 30 || y2 > 70){
+    final = ( (y1/300*30) + (y2/700*70) );
+}
+// إذا الإدخال من 30 و 70
+else{
+    final = y1 + y2;
+}
+
+final = final.toFixed(2);
+
+r3.innerHTML="🎯 المعدل النهائي: "+final+" / 100";
+}
+function clearAll(){
+    if(confirm("هل أنت متأكد من مسح جميع القيم؟")){
+        for(let i=1;i<=4;i++){
+            document.getElementById("y1_"+i).value="";
+        }
+
+        for(let i=1;i<=4;i++){
+            document.getElementById("y2_"+i).value="";
+        }
+
+        f1.value="";
+        f2.value="";
+
+        r1.innerHTML="";
+        r2.innerHTML="";
+        r3.innerHTML="";
+    }
+}
+</script>
+</body>
+</html>
