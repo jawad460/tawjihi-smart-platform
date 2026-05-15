@@ -1,282 +1,277 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-<!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-HRV64TC5ZQ"></script>
-
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-HRV64TC5ZQ');
 </script>
 
-<!-- GoatCounter -->
-<script data-goatcounter="https://tawjihi-smart-platform.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script>
-  <meta charset="UTF-8">
+<script data-goatcounter="https://tawjihi-smart-platform.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>منصة التوجيهي الذكية</title>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-body{
-font-family:'Cairo',sans-serif;
-direction:rtl;
-margin:0;
-background:linear-gradient(135deg,#eef2f7,#dfe9f3);
-}
+body{ font-family:'Cairo',sans-serif; direction:rtl; margin:0; background:linear-gradient(135deg,#eef2f7,#dfe9f3); color: #2c3e50; }
+header{ background:linear-gradient(135deg,#1e3a5f,#3498db); color:#fff; text-align:center; padding:20px; box-shadow:0 4px 10px rgba(0,0,0,0.1); }
+.tabs{ display:flex; flex-wrap:wrap; background:#fff; box-shadow:0 2px 8px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100; }
+.tabs button{ flex:1; padding:14px; border:none; background:#ecf0f1; cursor:pointer; font-weight:600; transition:0.3s; font-family: 'Cairo'; }
+.tabs button:hover{ background:#d6e4f0; }
+.tabs button.active{ background:#3498db; color:#fff; }
+.section{ display:none; padding:15px; max-width: 1000px; margin: auto; }
+.section.active{ display:block; animation:fade 0.3s ease; }
+@keyframes fade{ from{opacity:0;transform:translateY(10px);} to{opacity:1;transform:translateY(0);} }
+.box{ background:#fff; margin:12px; border-radius:15px; padding:18px; box-shadow:0 6px 15px rgba(0,0,0,0.08); }
+h2{ color:#1e3a5f; margin-bottom:15px; border-right: 4px solid #3498db; padding-right: 10px; }
+table { width: 100%; border-collapse: collapse; margin: 15px 0; background: #fff; }
+th, td { border: 1px solid #ddd; padding: 12px; text-align: center; }
+th { background-color: #3498db; color: white; }
+tr:nth-child(even) { background-color: #f2f2f2; }
+input,textarea{ width:90%; padding:10px; margin:6px; border-radius:8px; border:1px solid #ccc; font-family: 'Cairo'; }
+button.calc{ background:linear-gradient(135deg,#27ae60,#2ecc71); color:#fff; border:none; padding:10px 15px; border-radius:8px; cursor:pointer; transition:0.3s; width: 100%; font-weight: bold; }
+button.calc:hover{ transform:scale(1.02); }
+.result{ font-weight:bold; margin-top:10px; color:#1e3a5f; background: #e8f4fd; padding: 10px; border-radius: 8px; }
+.note{ background:#fff3cd; padding:15px; border-radius:10px; margin:10px 0; border-right: 5px solid #ffc107; }
+footer { text-align: center; padding: 20px; color: #7f8c8d; }
 
-header{
-background:linear-gradient(135deg,#1e3a5f,#3498db);
-color:#fff;
-text-align:center;
-padding:20px;
-box-shadow:0 4px 10px rgba(0,0,0,0.1);
-}
-
-.tabs{
-display:flex;
-flex-wrap:wrap;
-background:#fff;
-box-shadow:0 2px 8px rgba(0,0,0,0.05);
-}
-
-.tabs button{
-flex:1;
-padding:14px;
-border:none;
-background:#ecf0f1;
-cursor:pointer;
-font-weight:600;
-transition:0.3s;
-}
-
-.tabs button:hover{
-background:#d6e4f0;
-}
-
-.tabs button.active{
-background:#3498db;
-color:#fff;
-}
-
-.section{
-display:none;
-padding:15px;
-}
-
-.section.active{
-display:block;
-animation:fade 0.3s ease;
-}
-
-@keyframes fade{
-from{opacity:0;transform:translateY(10px);}
-to{opacity:1;transform:translateY(0);}
-}
-
-.box{
-background:#fff;
-margin:12px;
-border-radius:15px;
-padding:18px;
-box-shadow:0 6px 15px rgba(0,0,0,0.08);
-}
-
-h2{
-color:#1e3a5f;
-margin-bottom:10px;
-}
-
-input,textarea{
-width:90%;
-padding:10px;
-margin:6px;
-border-radius:8px;
-border:1px solid #ccc;
-}
-
-button.calc{
-background:linear-gradient(135deg,#27ae60,#2ecc71);
-color:#fff;
-border:none;
-padding:10px 15px;
-border-radius:8px;
-cursor:pointer;
-transition:0.3s;
-}
-
-button.calc:hover{
-transform:scale(1.05);
-}
-
-.result{
-font-weight:bold;
-margin-top:10px;
-color:#2c3e50;
-}
-
-.note{
-background:#fff3cd;
-padding:10px;
-border-radius:10px;
-margin:10px 0;
-}
+/* تنسيق الأسئلة المخفية */
+details { background: #f9f9f9; border: 1px solid #ddd; border-radius: 8px; margin-bottom: 10px; padding: 10px; transition: 0.3s; }
+details[open] { background: #e8f4fd; border-color: #3498db; }
+summary { font-weight: bold; cursor: pointer; color: #1e3a5f; outline: none; }
+summary:hover { color: #3498db; }
+details p { margin-top: 10px; padding-right: 15px; color: #2c3e50; }
 </style>
 </head>
-
 <body>
 
 <header>
 <h1>🎯 منصة التوجيهي الذكية</h1>
-<p>شرح شامل + حاسبات + نصائح</p>
+<p>دليلك الشامل للنظام الجديد (الأكاديمي و BTEC)</p>
 </header>
 
 <div class="tabs">
-<button onclick="showTab(0)" class="active">📖 الشرح</button>
+<button onclick="showTab(0)" class="active">📖 تفاصيل النظام</button>
 <button onclick="showTab(1)">🧮 الحاسبات</button>
-<button onclick="showTab(2)">💡 النصائح</button>
-<button onclick="showTab(3)">❓ الأسئلة</button>
+<button onclick="showTab(2)">💡 نصائح هامة</button>
+<button onclick="showTab(3)">❓ الأسئلة الشائعة</button>
 </div>
 
-<!-- الشرح -->
 <div class="section active">
 <div class="box">
 
-<h2>📢 تنويه</h2>
-<p>جميع المعلومات قابلة للتغيير حسب قرارات وزارة التربية والتعليم الأردنية وهي مبنية على آخر ما هو معلن حاليًا.</p>
-
-<h2>🟢 السنة الأولى (الأول ثانوي)</h2>
+<h2>📌 ملاحظات هامة جداً عن النظام</h2>
+<div class="note">
 <ul>
-<li>4 مواد: عربي (100) + إنجليزي/رياضيات (100) + دين (60) + تاريخ (40)</li>
-<li>المجموع: 300 علامة = 30%</li>
-<li>يشترط النجاح بالمدرسي للتقدم للوزاري</li>
+    <li><b>للأجيال القادمة (2010 فما بعد):</b> اختيار الحقل المسموح لك بدخوله في الصف الحادي عشر سيعتمد بشكل أساسي على معدلاتك في الصفين التاسع والعاشر || ايضا استبدلوا مادة الانجليزي بمادة الرياضيات في الصف الحادي عشر .</li>
+    <li><b>شرط التقدم للوزاري:</b> يُشترط النجاح في <b>جميع المواد المدرسية</b> في الصفين الحادي عشر والثاني عشر لكي يُسمح لك بالتقدم لامتحانات الوزارة (إياك أن تهمل امتحانات المدرسة).</li>
+    <li><b>نظام الامتحانات (الأول ثانوي):</b>
+        <ul>
+            <li><b>التاريخ:</b> 40 دائرة (كل دائرة عليها علامة واحدة).</li>
+            <li><b>الدين:</b> 40 دائرة (كل دائرة عليها علامة ونصف).</li>
+            <li><b>العربي والإنجليزي:</b> تتضمن أسئلة ضع دائرة، بالإضافة إلى كتابة تعبير، وحل أسئلة على فقرات.</li>
+        </ul>
+    </li>
+    <li><b>نظام الامتحانات (التوجيهي - الثاني ثانوي):</b> جميع الامتحانات الوزارية في السنة الثانية ستكون بنظام "ضع دائرة" بالكامل.</li>
 </ul>
+</div>
 
-<h3>📌 الحقول (التخصصات)</h3>
-<ul>
-<li><b>الحقل الصحي:</b> إنجليزي متقدم + أحياء + كيمياء + (رياضيات أو فيزياء أو علوم أرض)</li>
-<li><b>الهندسة وتكنولوجيا المعلومات:</b> إنجليزي متقدم + رياضيات + فيزياء + (كيمياء أو أحياء أو علوم أرض)</li>
-<li><b>اللغات والعلوم الإنسانية:</b> عربي تخصص + دين تخصص + إنجليزي متقدم + (ثقافة مالية أو علم نفس أو فلسفة)</li>
-<li><b>الأعمال:</b> إنجليزي متقدم + رياضيات + أعمال + ثقافة مالية + (فلسفة أو تاريخ أو جغرافيا)</li>
-</ul>
+<h2>📊 جدول الحقول والمواد (النظام الأكاديمي)</h2>
+<table>
+    <tr>
+        <th>الحقل</th>
+        <th>المواد الإجبارية (وزاري)</th>
+        <th>المواد الاختيارية (اختر مادة واحدة)</th>
+    </tr>
+    <tr>
+        <td><b>الصحي</b></td>
+        <td>إنجليزي متقدم، أحياء، كيمياء</td>
+        <td>رياضيات، فيزياء، علوم أرض</td>
+    </tr>
+    <tr>
+        <td><b>العلوم و التكنولوجيا و الهندسة</b></td>
+        <td>إنجليزي متقدم، رياضيات، فيزياء</td>
+        <td>كيمياء، أحياء، علوم أرض</td>
+    </tr>
+    <tr>
+        <td><b>اللغات والعلوم الإنسانية والاجتماعية</b></td>
+        <td>عربي تخصص، دين تخصص، إنجليزي متقدم</td>
+        <td>ثقافة مالية، علم الاجتماع و النفس، فلسفة</td>
+    </tr>
+    <tr>
+        <td><b>الأعمال</b></td>
+        <td>إنجليزي متقدم، رياضيات الأعمال، ثقافة مالية</td>
+        <td>فلسفة، تاريخ، جغرافيا, علم الاجتماع و النفس</td>
+    </tr>
+</table>
 
-<p>
-طلاب 2009: اختيار حر<br>
-طلاب 2010+: يعتمد على معدل العاشر والأول ثانوي
-</p>
+<h2>🎓 التخصصات الجامعية المتاحة لكل حقل</h2>
+<table>
+    <tr>
+        <th>الحقل</th>
+        <th>أبرز التخصصات الجامعية المسموحة (أكثر من 10 تخصصات لكل حقل)</th>
+    </tr>
+    <tr>
+        <td><b>الصحي</b></td>
+        <td>الطب البشري، طب الأسنان، دكتور صيدلة، الصيدلة، التمريض، التحاليل الطبية، العلاج الطبيعي، علوم السمع والنطق، التغذية السريرية، الأشعة والتصوير الطبي، البصريات، التخدير والإنعاش.</td>
+    </tr>
+    <tr>
+        <td><b>العلوم و التكنولوجيا و الهندسة</b></td>
+        <td>هندسة الحاسوب، الأمن السيبراني، الذكاء الاصطناعي، علم الحاسوب، الهندسة المدنية، الهندسة المعمارية، هندسة الميكاترونكس، هندسة الكهرباء، هندسة البرمجيات، هندسة الاتصالات، هندسة الطيران، نظم المعلومات الحاسوبية.</td>
+    </tr>
+    <tr>
+        <td><b>اللغات والعلوم الإنسانية والاجتماعية</b></td>
+        <td>اللغة العربية، اللغة الإنجليزية وآدابها، الترجمة، الحقوق، العلوم السياسية، علم الاجتماع، التاريخ، الجغرافيا، الصحافة والإعلام، الإرشاد النفسي، التربية الخاصة، الشريعة والدراسات الإسلامية.</td>
+    </tr>
+    <tr>
+        <td><b>الأعمال</b></td>
+        <td>المحاسبة، إدارة الأعمال، التسويق، التمويل والمصارف، نظم المعلومات الإدارية (MIS)، الاقتصاد، إدارة الموارد البشرية، العلوم اللوجستية، إدارة الفنادق والسياحة، المصارف الإسلامية، ذكاء الأعمال.</td>
+    </tr>
+</table>
 
-<h2>🔴 السنة الثانية (التوجيهي)</h2>
-<ul>
-<li>4 مواد حسب الحقل</li>
-<li>المجموع: 700 = 70%</li>
-<li>كل 3 علامات ≈ 1% من المعدل</li>
-</ul>
-
-<h2>📝 نظام الامتحانات</h2>
-<ul>
-<li>السنة الأولى: دوائر + تعبير بالعربي والانجليزي</li>
-<li>السنة الثانية: كله اختيار من متعدد فقط</li>
-</ul>
-
+<h2>🔄 الفرق بين النظام الأكاديمي ونظام BTEC</h2>
+<table>
+    <tr>
+        <th>وجه المقارنة</th>
+        <th>النظام الأكاديمي</th>
+        <th>نظام BTEC (التقني)</th>
+    </tr>
+    <tr>
+        <td><b>طبيعة الدراسة</b></td>
+        <td>نظرية تعتمد على الحفظ والفهم والامتحانات الوزارية.</td>
+        <td>عملية تطبيقية تعتمد على المشاريع والمهارات العملية.</td>
+    </tr>
+    <tr>
+        <td><b>التقييم</b></td>
+        <td>30% أول ثانوي + 70% توجيهي (امتحانات).</td>
+        <td>تقييم مستمر طوال العام بناءً على المشاريع والواجبات.</td>
+    </tr>
+    <tr>
+        <td><b>المسارات</b></td>
+        <td>صحي، هندسي، أعمال، أدبي.</td>
+        <td>هندسة، IT، تجميل، ضيافة، زراعة، وسائط إبداعية.</td>
+    </tr>
+    <tr>
+        <td><b>القبول الجامعي</b></td>
+        <td>يسمح بدخول كافة التخصصات الجامعية حسب الحقل.</td>
+        <td>يسمح بدخول التخصصات التقنية والمناظرة لتخصصك.</td>
+    </tr>
+</table>
 </div>
 </div>
 
-<!-- الحاسبات -->
 <div class="section">
 <div class="box">
-<h2>🧮 الحاسبات</h2>
-
-<h3>السنة الأولى</h3>
-<input id="y1_1" placeholder="عربي">
-<input id="y1_2" placeholder="دين">
-<input id="y1_3" placeholder="تاريخ">
-<input id="y1_4" placeholder="إنجليزي/رياضيات">
-<button class="calc" onclick="calcY1()">احسب</button>
+<h2>🧮 الحاسبة (المنطق الأصلي)</h2>
+<h3>السنة الأولى (من 30)</h3>
+<input id="y1_1" placeholder="عربي (من 100)">
+<input id="y1_2" placeholder="دين (من 60)">
+<input id="y1_3" placeholder="تاريخ (من 40)">
+<input id="y1_4" placeholder="إنجليزي/رياضيات (من 100)">
+<button class="calc" onclick="calcY1()">احسب نسبة السنة الأولى</button>
 <div id="r1" class="result"></div>
 
-<h3>السنة الثانية</h3>
-<input id="y2_1"><input id="y2_2"><input id="y2_3"><input id="y2_4">
-<button class="calc" onclick="calcY2()">احسب</button>
+<h3>السنة الثانية (من 70)</h3>
+<input id="y2_1" placeholder="مادة 1 (من 175)"><input id="y2_2" placeholder="مادة 2 (من 175)">
+<input id="y2_3" placeholder="مادة 3 (من 175)"><input id="y2_4" placeholder="مادة 4 (من 175)">
+<button class="calc" onclick="calcY2()">احسب نسبة السنة الثانية</button>
 <div id="r2" class="result"></div>
 
-<h3>المعدل النهائي</h3>
-<input id="f1" placeholder="مجموع السنة الأولى">
-<input id="f2" placeholder="مجموع السنة الثانية">
-<button class="calc" onclick="calcFinal()">احسب</button>
+<h3>المعدل النهائي التراكمي</h3>
+<input id="f1" placeholder="مجموعك من 30">
+<input id="f2" placeholder="مجموعك من 70">
+<button class="calc" onclick="calcFinal()" style="background:#1e3a5f">احسب المعدل الكلي</button>
 <div id="r3" class="result"></div>
 
-<button onclick="clearAll()" style="background:#e74c3c;color:white;margin-top:10px;">
-🗑️ مسح جميع القيم
+<button onclick="clearAll()" style="background:#e74c3c;color:white;margin-top:10px; border:none; padding:8px; border-radius:5px; cursor:pointer;">
+🗑️ مسح البيانات
 </button>
 </div>
 </div>
 
-<!-- النصائح -->
 <div class="section">
 <div class="box">
+<h2>💡 نصائح فعلية من الميدان</h2>
 
-<h2>💡 نصائح</h2>
-
-<h3>📘 طلاب الاول ثانوي ( السنة الأولى )</h3>
+<h3>1️⃣ لطلاب الحادي عشر (السنة الأولى)</h3>
 <ul>
-<li>لا تستهين بالـ30%</li>
-<li>افهم قبل ما تحفظ</li>
-<li>حل أسئلة سنوات</li>
-<li>لا تضيع وقتك على الهاتف والملهيات</li>
-<li>اسأل طلاب قبلك وتعلم من أخطائهم</li>
-<li>استخير وفكر جيدًا قبل اختيار الحقل</li>
-<li>نظم وقتك من البداية</li>
-<li>راجع أول بأول ولا تراكم</li>
+    <li><b>الـ 30% كنز:</b> هاي أسهل علامات رح تجيبها، لو ضيعتها رح تتغلب كثير عشان تعوض بالـ 70%. لا تستهين فيها.</li>
+    <li><b>المدرسة مش بس دوام:</b> علامات المدرسة ونجاحك فيها شرط أساسي عشان تقدم وزاري، فما تطقع للدوام والامتحانات المدرسية.</li>
+    <li><b>حل أسئلة سنوات:</b> صح النظام جديد، بس طبيعة أسئلة الوزارة بالمواد الأساسية زي الدين والتاريخ ما بتتغير كثير، تمرن عليها.</li>
+    <li><b>اختار صح من البداية:</b> لا تلحق صحابك على نفس الحقل، اختار الحقل اللي بيناسب معدلك وميولك عشان ما تندم وتضطر تعيد.</li>
+    <li><b>ابعد عن جو التوتر:</b> التوجيهي صار سنتين عشان ترتاح وتتوزع المواد، مش عشان تتوتر سنتين!</li>
 </ul>
 
-<h3>📕 طلاب التوجيهي ( السنة الثانية )</h3>
+<h3>2️⃣ لطلاب التوجيهي (السنة الثانية)</h3>
 <ul>
-<li>قسم يومك</li>
-<li>ركز على الأسئلة</li>
-<li>راجع باستمرار</li>
-<li>لا تضيع وقت</li>
-<li>لا تتكاسل لأنك طولت، أنت قربت تخلص</li>
-<li>موادك صعبة والغلط فيها مكلف</li>
-<li>حل أكبر عدد ممكن من الأسئلة</li>
-<li>اهتم بالنوم والصحة</li>
+    <li><b>لا تراكم أبداً:</b> كل درس بتاخذه ادرسه بيومه. التراكم هو أكبر عدو لطالب التوجيهي وبيعمل ضغط نفسي مش طبيعي.</li>
+    <li><b>الدوائر بدها دقة:</b> امتحانك كله "ضع دائرة"، يعني يا صح يا غلط وما في علامات عالخطوات. ركز على التفاصيل الدقيقة بين السطور بالكتاب.</li>
+    <li><b>الدراسة بالانجاز مش بالساعات:</b> لا تحكي "بدي أدرس 6 ساعات"، احكي "اليوم بدي أخلص وحدة كذا". العبرة باللي بتنجزه مش بالوقت اللي بتقعده عالكتاب.</li>
+    <li><b>المراجعة المستمرة:</b> المادة اللي بتتركها شهر رح تنساها، خلي يوم بالأسبوع بس لمراجعة القديم.</li>
+    <li><b>امتحن حالك بالبيت:</b> جيب امتحانات تجريبية وحلّها وعيّر لحالك وقت، عشان تتعود على جو الامتحان وما تتوتر بالقاعة.</li>
 </ul>
 
-<h3>🎯 الطلاب المقبلين على التوجيهي</h3>
+<h3>3️⃣ للمقبلين على الجامعات والتخصصات</h3>
 <ul>
-<li>ابدأ مبكرًا</li>
-<li>نظم وقتك</li>
-<li>ابنِ أساس قوي</li>
-<li>اختار أستاذك بعناية</li>
-<li>قيم نفسك إذا تحتاج تأسيس</li>
-<li>لا تمشي وراء كلام الناس بدون تفكير</li>
-<li>جرب طرق دراسة مختلفة</li>
-<li>حط هدف واضح من البداية</li>
+    <li><b>ابعد عن التخصصات الراكدة:</b> قبل ما تختار تخصصك، فوت على موقع ديوان الخدمة المدنية وشوف التخصصات المشبعة اللي ما إلها تعيين واهرب منها.</li>
+    <li><b>المعدل مش كل شي:</b> إذا جبت معدل عالي مش شرط تفوت طب أو هندسة إذا إنت ما بتحبهم، فوت التخصص اللي بتبدع فيه وإلك شغف فيه، لأنك بالنهاية رح تشتغل بشهادتك مش بمعدلك.</li>
+    <li><b>المنح والقروض:</b> بلّش دوّر من هسا على منح الجامعات وكيف تقدم إلها (زي منح الديوان الملكي أو منح التعليم العالي)، لا تستنى لآخر لحظة.</li>
+    <li><b>السوق بده مهارات مش بس كرتونة:</b> الجامعة بتعطيك شهادة، بس دوراتك، لغتك الإنجليزية، ومهاراتك التقنية هي اللي رح تخليك تلاقي شغل بسرعة.</li>
+    <li><b>استخير واسأل أهل الخبرة:</b> اسأل طلاب خريجين من نفس التخصص عن طبيعة دراسته وسوق عمله، ولا تعتمد بس على كلام النت.</li>
 </ul>
-
 </div>
 </div>
-<footer>
-© 2026 Jawad Obeidat
-</footer>
-<!-- FAQ -->
+
 <div class="section">
 <div class="box">
-
 <h2>❓ الأسئلة الشائعة</h2>
 
-<p><b>هل السنة الأولى مهمة؟</b><br>نعم 30% كاملة</p>
-<p><b>هل أقدر أعوض؟</b><br>نعم بالسنة الثانية</p>
-<p><b>كيف أختار الحقل؟</b><br>حسب ميولك ومعدلك</p>
-<p><b>هل الامتحانات صعبة؟</b><br>تحتاج تدريب مستمر</p>
+<details>
+    <summary>هل يمكنني الرسوب في السنة الأولى والتقدم للسنة الثانية؟</summary>
+    <p>لا، يُشترط النجاح المدرسّي في مواد السنة الأولى حتى يُسمح لك بالتقدم للامتحانات الوزارية في نفس السنة، ويجب النجاح وزارياً لتكمل.</p>
+</details>
+
+<details>
+    <summary>ماذا لو حصلت على علامة سيئة في الـ 30%؟</summary>
+    <p>بإمكانك التعويض برفع معدلك العام من خلال التفوق في مواد التخصص في السنة الثانية والتي تشكل 70% من المعدل، لكن البداية القوية تخفف عنك الضغط.</p>
+</details>
+
+<details>
+    <summary>هل نظام BTEC مقبول في الجامعات؟</summary>
+    <p>نعم، مقبول في الجامعات الأردنية ولكن ضمن تخصصات محددة تناظر التخصص التقني الذي درسته (مثلاً: طالب BTEC هندسة يدرس هندسة بالجامعة).</p>
+</details>
+
+<details>
+    <summary>هل مادة "علوم الأرض" اختيارية لجميع الحقول؟</summary>
+    <p>لا، هي متاحة كمادة اختيارية في الحقل الصحي والحقل الهندسي فقط، ولا يمكن لطلاب الأعمال أو اللغات اختيارها.</p>
+</details>
+
+<details>
+    <summary>هل أقدر أغير حقلي بعد الأول ثانوي؟</summary>
+    <p>نعم مسموح، لكن يفضل دائما تختار صح من البداية لتتجنب اي مشكلة او اي مشاوير زيادة ما الها داعي.</p>
+</details>
+
+<details>
+    <summary>كيف تنحسب علامة الدين والتاريخ بالوزاري؟</summary>
+    <p>امتحان التاريخ يتكون من 40 دائرة (كل دائرة عليها علامة واحدة = 40). أما امتحان الدين فيتكون من 40 دائرة (كل دائرة عليها علامة ونصف = 60).</p>
+</details>
 
 <div class="note">
-<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc3w-XVvukWX6f5_jvOM1t3SRTBwfHXXIuipZPvSmBmLUZuew/viewform?usp=header" width="100%" height="400"></iframe></div>
+<p>لديك سؤال لم نجبه؟ اطرحه هنا:</p>
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc3w-XVvukWX6f5_jvOM1t3SRTBwfHXXIuipZPvSmBmLUZuew/viewform?usp=header" width="100%" height="400" frameborder="0"></iframe>
+</div>
+</div>
 </div>
 
+<p style="text-align:center; font-size: 0.9em; color: #e74c3c; margin-top: 20px; font-weight: bold; padding: 0 15px;">
+⚠️ تنويه هام: جميع المعلومات الواردة في هذه المنصة قابلة للتغيير بناءً على أحدث قرارات وزارة التربية والتعليم الأردنية، وهي مبنية على آخر التحديثات الرسمية المعلنة.
+</p>
+
 <footer>
-© 2026 Jawad Obeidat
+© 2026 Jawad Obeidat - منصة التوجيهي الذكية
 </footer>
 
 <script>
@@ -289,58 +284,46 @@ tabs[i].classList.add('active');
 btns[i].classList.add('active');
 }
 
-// السنة الأولى (من 30)
+// استرجاع المنطق الأصلي الخاص بك (السنة الأولى من 300)
 function calcY1(){
 let s=0;
 for(let i=1;i<=4;i++){s+=Number(document.getElementById("y1_"+i).value||0);}
 let outOf30=(s/300*30).toFixed(2);
-r1.innerHTML="المجموع: "+s+" / 300<br>من 30: "+outOf30;
+document.getElementById("r1").innerHTML="المجموع: "+s+" / 300<br>نسبتك من المعدل العام: "+outOf30+" / 30";
 }
 
-// السنة الثانية (من 70)
+// استرجاع المنطق الأصلي (السنة الثانية من 700)
 function calcY2(){
 let s=0;
 for(let i=1;i<=4;i++){s+=Number(document.getElementById("y2_"+i).value||0);}
 let outOf70=(s/700*70).toFixed(2);
-r2.innerHTML="المجموع: "+s+" / 700<br>من 70: "+outOf70;
+document.getElementById("r2").innerHTML="المجموع: "+s+" / 700<br>نسبتك من المعدل العام: "+outOf70+" / 70";
 }
 
-// النهائي (من 100)
+// استرجاع المنطق النهائي (الجمع البسيط)
 function calcFinal(){
 let y1 = parseFloat(document.getElementById("f1").value) || 0;
 let y2 = parseFloat(document.getElementById("f2").value) || 0;
-
 let final = 0;
-
-// إذا الإدخال من 300 و 700
 if(y1 > 30 || y2 > 70){
     final = ( (y1/300*30) + (y2/700*70) );
-}
-// إذا الإدخال من 30 و 70
-else{
+} else {
     final = y1 + y2;
 }
-
-document.getElementById("r3").innerHTML =
-"🎯 المعدل النهائي: " + final.toFixed(2) + " / 100";
+document.getElementById("r3").innerHTML ="🎯 المعدل النهائي التراكمي: " + final.toFixed(2) + " / 100";
 }
 
 function clearAll(){
-    if(confirm("هل أنت متأكد من مسح جميع القيم؟")){
+    if(confirm("هل تريد مسح جميع البيانات؟")){
         for(let i=1;i<=4;i++){
             document.getElementById("y1_"+i).value="";
-        }
-
-        for(let i=1;i<=4;i++){
             document.getElementById("y2_"+i).value="";
         }
-
-        f1.value="";
-        f2.value="";
-
-        r1.innerHTML="";
-        r2.innerHTML="";
-        r3.innerHTML="";
+        document.getElementById("f1").value="";
+        document.getElementById("f2").value="";
+        document.getElementById("r1").innerHTML="";
+        document.getElementById("r2").innerHTML="";
+        document.getElementById("r3").innerHTML="";
     }
 }
 </script>
