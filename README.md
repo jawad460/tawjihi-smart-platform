@@ -16,7 +16,7 @@ A smart web platform designed to help Jordanian Tawjihi students understand the 
 ## 🎯 Purpose
 This project was built to solve a real problem faced by students in Jordan.
 
-## 🌐 Live Website https://jawad460.github.io/tawjihi-smart-platform/
+## 🌐 Live Website https://jawad-obeidat.github.io/tawjihi-smart-platform/
 
 ## 👤 Author
 Jawad Obeidat
